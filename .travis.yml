@@ -3,4 +3,4 @@ xcode_project: test/test.xcodeproj
 xcode_scheme: test
 
 script:
-  - xcodebuild test CODESIGNING_REQUIRED=NO 
+  - xcodebuild -project "./test" test CODESIGNING_REQUIRED=NO 
