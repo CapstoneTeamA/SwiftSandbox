@@ -3,4 +3,4 @@ xcode_workspace: workspace.xcworkspace
 xcode_scheme: test
 
 script:
-  - xcodebuild -project "/test/test.xcproj" test CODESIGNING_REQUIRED=NO 
+  - xcodebuild test CODESIGNING_REQUIRED=NO 
