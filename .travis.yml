@@ -3,4 +3,4 @@ xcode_project: test/test.xcodeproj
 xcode_scheme: test
 
 script:
-  - xcodebuild [DEFAULT_OPTIONS] CODESIGNING_REQUIRED=NO 
+  - xcodebuild test CODESIGNING_REQUIRED=NO 
