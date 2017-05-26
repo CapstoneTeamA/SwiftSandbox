@@ -3,4 +3,4 @@ xcode_workspace: workspace.xcworkspace
 xcode_scheme: test
 
 script:
-  - xcodebuild -project "/Users/travis/build/CapstoneTeamA/SwiftSandbox/test/test.xcproj" test CODESIGNING_REQUIRED=NO 
+  - xcodebuild -workspace "workspace.xcworkspace" test CODESIGNING_REQUIRED=NO 
