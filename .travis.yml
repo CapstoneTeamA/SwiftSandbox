@@ -1,6 +1,6 @@
 language: objective-c
-xcode_project: test/test.xcodeproj
+xcode_workspace: workspace.xcworkspace
 xcode_scheme: test
 
 script:
-  - xcodebuild -project "./test" test CODESIGNING_REQUIRED=NO 
+  - xcodebuild -project "/test/test.xcproj" test CODESIGNING_REQUIRED=NO 
