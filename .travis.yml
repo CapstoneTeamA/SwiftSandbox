@@ -3,4 +3,4 @@ xcode_workspace: workspace.xcworkspace
 xcode_scheme: test
 
 script:
-  - xcodebuild -workspace "workspace.xcworkspace" -scheme "test" test CODESIGNING_REQUIRED=NO 
+  - xcodebuild -workspace "workspace.xcworkspace" -scheme "test" CODESIGNING_REQUIRED=NO 
