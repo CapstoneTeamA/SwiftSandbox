@@ -1,3 +1,6 @@
 language: objective-c
 xcode_project: test/test.xcodeproj
-xcode_scheme: test 
+xcode_scheme: test
+
+script:
+  - xcodebuild [DEFAULT_OPTIONS] CODESIGNING_REQUIRED=NO 
