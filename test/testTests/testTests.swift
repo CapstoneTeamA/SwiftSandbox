@@ -24,7 +24,6 @@ class testTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertTrue(true, "broken on purpose")
     }
     
     func testPerformanceExample() {
@@ -32,10 +31,6 @@ class testTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
-    }
-    
-    func testExample2() {
-        XCTAssertTrue(false, "This is intentionaly broken for testing ")
     }
     
 }
