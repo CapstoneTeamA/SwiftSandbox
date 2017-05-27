@@ -60,14 +60,25 @@ class ViewController: UIViewController {
                 print("Error did not recieve data")
                 return
             }
+            
             do {
                 guard let jsonData = try JSONSerialization.jsonObject(with: responseData, options: [])
                     as? [String: Any] else {
                         print("error trying to convert to JSON")
                         return
                 }
-                print("The jsonData is\n" + jsonData.description)
-                print("Count = " + jsonData.count.description)
+                var meta: [String:AnyObject] = jsonData["meta"] as! Dictionary
+                
+                let status = meta["status"] as! String
+                if (status == "Unauthorized") {
+                    print("Authorization failed")
+                    return
+                }
+                else {
+                    var currentUser: [String: AnyObject] = jsonData["data"] as! Dictionary
+                    let name = currentUser["firstName"] as! String
+                    print("Hello " + name)
+                }
 
             } catch {
                 print("error trying to convert to json")
