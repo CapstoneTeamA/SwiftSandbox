@@ -5,4 +5,4 @@ xcode_workspace: workspace.xcworkspace
 xcode_scheme: test
 
 script:
-  - xcodebuild -workspace "workspace.xcworkspace" -scheme "test" clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO 
+  - xcodebuild -workspace "workspace.xcworkspace" -scheme "test" clean build run test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO 
