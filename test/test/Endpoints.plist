@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Instance</key>
+	<string>capstone-sandbox</string>
+	<key>GET</key>
+	<dict>
+		<key>Current User</key>
+		<string>jamacloud.com/rest/latest/users/current</string>
+		<key>Test Plan Cycles</key>
+		<string>jamacloud.com/rest/latest/testplans/{testPlanID}/testcycles</string>
+		<key>Test Plans</key>
+		<string>jamacloud.com/rest/latest/testplans?project={projectId}</string>
+		<key>Projects</key>
+		<string>jamacloud.com/rest/latest/projects</string>
+	</dict>
+</dict>
+</plist>
