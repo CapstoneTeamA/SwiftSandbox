@@ -34,4 +34,8 @@ class testTests: XCTestCase {
         }
     }
     
+    func testExample2() {
+        XCTAssertTrue(false, "This is intentionaly broken for testing ")
+    }
+    
 }
