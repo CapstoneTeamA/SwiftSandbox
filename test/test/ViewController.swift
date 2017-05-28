@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonOutlet: UIButton!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
+    
+    var projectNames : [String] = []
+    var projectIds : [Int] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -26,6 +29,87 @@ class ViewController: UIViewController {
     @IBAction func buttonTouchUp(_ sender: Any) {
         print("Button touched, calling to get current user")
         greetCurrentUser() //Makes rest call to get current user and prints a greeting
+        
+
+        getProjList(sender)
+        performSegue(withIdentifier: "ProjectTableSegue", sender: sender)
+        
+    }
+    
+    func getProjList(_ sender: Any){
+        var endpoint = ""
+        let instance = EndpointHelper.getInstance()
+        
+        endpoint += "https://" + instance + "."
+        endpoint += EndpointHelper.getEndpoint(httpMethod: "GET", endpointKey: "Projects")
+        //Create a url from the endpoint string
+        guard let url = URL(string: endpoint) else {
+            print("Bad string for url")
+            return
+        }
+        
+        //Get a URLRequest with basic auth
+        let request = basicAuth(url: url)
+        let session = URLSession.shared
+        
+        //define the completion handler for the dataTask because this is done async
+        let task = session.dataTask(with: request) {
+            (data,response,error) in
+            guard error == nil else {
+                print("error calling endpoint")
+                print(error as Any)
+                return
+            }
+            guard let responseData = data else {
+                print("Error did not recieve data")
+                return
+            }
+            //Parsing json
+            do {
+                guard let jsonData = try JSONSerialization.jsonObject(with: responseData, options: [])
+                    as? [String: Any] else {
+                        print("error trying to convert to JSON")
+                        return
+                }
+                //Get the meta section of the response to get the status
+                var meta: [String:AnyObject] = jsonData["meta"] as! Dictionary
+                let status = meta["status"] as! String
+                
+                //If user isn't authorized print an auth failed message
+                if (status == "Unauthorized") {
+                    print("Authorization failed")
+                    return
+                } else {
+                    //user authorized, parse data section of response and print greeting
+                    let projectsData: [[String:AnyObject]] = jsonData["data"] as! Array
+                    
+                    print("projects count = " + String(projectsData.count))
+                    self.projectIds = []
+                    self.projectNames = []
+                    for project in projectsData {
+                        let fields : [String : AnyObject] = project["fields"] as! Dictionary
+                        let name : String = fields["name"] as! String
+                        
+                        self.projectNames.append(name)
+                        self.projectIds.append(project["id"] as! Int)
+                    }
+                }
+                
+            } catch {
+                print("error trying to convert to json")
+            }
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let tableViewController : ProjectTableViewController = storyboard.instantiateViewController(withIdentifier: "ProjectTableViewController") as! ProjectTableViewController
+            tableViewController.projNames = self.projectNames
+            tableViewController.projId = self.projectIds
+            
+            //This can be done better. This can't be the proper way to switch view controllers after an asycn call like this one
+            self.navigationController?.popViewController(animated: false)
+            self.navigationController?.pushViewController(tableViewController, animated: false)
+        }
+        
+        task.resume()
+        
     }
     
     func greetCurrentUser() {
