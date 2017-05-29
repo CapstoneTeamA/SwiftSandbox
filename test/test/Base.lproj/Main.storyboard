@@ -53,7 +53,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0n1-Q3-ioC"/>
+                    <navigationItem key="navigationItem" id="0n1-Q3-ioC">
+                        <barButtonItem key="backBarButtonItem" title="Go Back" id="SGI-MX-udI"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonOutlet" destination="mwm-wY-qTe" id="fUR-gQ-52u"/>
                         <outlet property="password" destination="dib-FX-5G9" id="CD4-UE-IzK"/>
@@ -86,21 +88,26 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="evK-D3-JIB" id="GIb-uC-Dd0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="34.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="0Do-kD-0Ff" id="qzr-jg-JVC"/>
+                                    <outlet property="dataSource" destination="0Do-kD-0Ff" id="HFK-aS-nug"/>
                                     <outlet property="delegate" destination="0Do-kD-0Ff" id="7JO-6o-vJa"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LUe-ad-qqh"/>
+                    <navigationItem key="navigationItem" id="LUe-ad-qqh">
+                        <barButtonItem key="backBarButtonItem" title="Go Back" id="VjI-aO-Q13"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="z7R-YR-7Id" id="jSm-1b-e7C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9gC-ty-koq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

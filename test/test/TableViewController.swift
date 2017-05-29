@@ -11,6 +11,7 @@ import UIKit
 
 class ProjectTableViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     var projNames : [String]? = []
     var projId : [Int]? = []
     
@@ -28,6 +29,7 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Projects"
     }
     
     override func didReceiveMemoryWarning() {
