@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class RestHelper {
     public static func getInstance() -> String{
@@ -49,5 +50,11 @@ public class RestHelper {
         urlRequest.addValue("Basic \(base64LoginString ?? "")", forHTTPHeaderField: "Authorization")
         
         return urlRequest
+    }
+    
+    public static func reloadTable(tableView: UITableView) {
+        DispatchQueue.main.async {
+            tableView.reloadData()
+        }
     }
 }

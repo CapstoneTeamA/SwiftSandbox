@@ -28,15 +28,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonTouchUp(_ sender: Any) {
-        print("Button touched, calling to get current user")
-        //greetCurrentUser() //Makes rest call to get current user and prints a greeting
-        
+        //Get the project table view controller and pass the username and password forward before navigating.
         let projTableViewController : ProjectTableViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProjectTableViewController") as! ProjectTableViewController
         projTableViewController.username = username.text!
         projTableViewController.password = password.text!
-//        gotoProjList(projectTableViewController: projTableViewController)
         self.navigationController?.pushViewController(projTableViewController, animated: true)
-        
     }
     
 

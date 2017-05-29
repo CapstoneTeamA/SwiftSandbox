@@ -25,17 +25,18 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
         
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.text = projNames?[indexPath.row]
+        //For un authorized, disable selection and color background red
         if cell.textLabel?.text == "Error, unauthorized" {
             cell.backgroundColor = UIColor.red
             cell.selectionStyle = UITableViewCellSelectionStyle.none
         }
-        
         return cell
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Projects"
+        //load projects into class with api call.
         getProjects()
     }
     
@@ -44,9 +45,9 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
     }
     
     func getProjects() {
+        //Build endpoint url
         var endpoint = ""
         let instance = RestHelper.getInstance()
-        
         endpoint += "https://" + instance + "."
         endpoint += RestHelper.getEndpoint(httpMethod: "GET", endpointKey: "Projects")
         
@@ -83,20 +84,16 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
                 var meta: [String:AnyObject] = jsonData["meta"] as! Dictionary
                 let status = meta["status"] as! String
                 
-                //If user isn't authorized print an auth failed message
+                //If user isn't authorized show an auth failed message
                 if (status == "Unauthorized") {
-                    print("Authorization failed")
                     self.projNames?.append("Error, unauthorized")
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                    //self.navigationController?.popViewController(animated: false)
+                    RestHelper.reloadTable(tableView: self.tableView)
                     return
                 } else {
                     //user authorized, parse data section of response and print greeting
                     let projectsData: [[String:AnyObject]] = jsonData["data"] as! Array
                     
-                    print("projects count = " + String(projectsData.count))
+                    //Clear out data about projects to load in new data
                     self.projIds = []
                     self.projNames = []
                     for project in projectsData {
@@ -111,11 +108,9 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
             } catch {
                 print("error trying to convert to json")
             }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            //After api call returns, reload data
+            RestHelper.reloadTable(tableView: self.tableView)
         }
         task.resume()
-        
     }
 }
