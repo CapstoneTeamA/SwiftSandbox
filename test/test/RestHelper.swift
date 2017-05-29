@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class EndpointHelper {
+public class RestHelper {
     public static func getInstance() -> String{
         //Get the Endpoints plist, grab and return the value from the "Instance" key
         if let path = Bundle.main.path(forResource: "Endpoints", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
@@ -32,5 +32,22 @@ public class EndpointHelper {
             return endpoint
         }
         return ""
+    }
+    
+    public static func basicAuth(url : URL, username: String, password: String) ->URLRequest {
+        //Grab the username and password from UI and build an encoded string for Rest basic auth
+        let user = username
+        let pass = password
+        let loginString = user + ":" + pass
+        let loginData = loginString.data(using: String.Encoding.utf8)
+        let base64LoginString = loginData?.base64EncodedString()
+        
+        //Create a URLRequest, add necessary key:values to the header, then return the request
+        var urlRequest = URLRequest(url: url)
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("Basic \(base64LoginString ?? "")", forHTTPHeaderField: "Authorization")
+        
+        return urlRequest
     }
 }
