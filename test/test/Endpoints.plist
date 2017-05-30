@@ -6,6 +6,8 @@
 	<string>capstone-sandbox</string>
 	<key>GET</key>
 	<dict>
+		<key>Test Cycle Runs</key>
+		<string>jamacloud.com/rest/latest/testcycles/{testCycleId}/testruns</string>
 		<key>Current User</key>
 		<string>jamacloud.com/rest/latest/users/current</string>
 		<key>Test Plan Cycles</key>

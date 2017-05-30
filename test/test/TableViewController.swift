@@ -16,7 +16,7 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
     var projIds : [Int]? = []
     var username = ""
     var password = ""
-    
+    let unauthorizedMessage = "Error, unauthorized"
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return projNames!.count
     }
@@ -26,7 +26,7 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.text = projNames?[indexPath.row]
         //For un authorized, disable selection and color background red
-        if cell.textLabel?.text == "Error, unauthorized" {
+        if cell.textLabel?.text == unauthorizedMessage {
             cell.backgroundColor = UIColor.red
             cell.selectionStyle = UITableViewCellSelectionStyle.none
         }
@@ -36,6 +36,9 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.cellForRow(at: indexPath)?.textLabel?.text == unauthorizedMessage {
+            return
+        }
         let testPlanViewController : TestPlanTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestPlanTableViewController") as! TestPlanTableViewController
         
         testPlanViewController.projId = (projIds?[indexPath.row])!

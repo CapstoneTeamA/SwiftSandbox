@@ -189,6 +189,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ktM-Mz-RvJ" kind="show" id="OOo-7W-00f"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -206,6 +209,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfo-hY-vwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4007" y="134"/>
+        </scene>
+        <!--Test Run Table View Controller-->
+        <scene sceneID="deo-51-r95">
+            <objects>
+                <viewController storyboardIdentifier="TestRunTableViewController" id="ktM-Mz-RvJ" customClass="TestRunTableViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pUg-hE-WEM"/>
+                        <viewControllerLayoutGuide type="bottom" id="jlP-Eq-Q1W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pUw-nT-YNU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qm2-QA-zIv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TestRunCell" id="sjy-am-ZrW">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sjy-am-ZrW" id="rZ6-3h-U8U">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ktM-Mz-RvJ" id="kVu-KS-x2R"/>
+                                    <outlet property="delegate" destination="ktM-Mz-RvJ" id="3Hl-mk-6Ac"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="testRunTable" destination="Qm2-QA-zIv" id="qNm-GC-Xjb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K4J-06-uvO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4951.1999999999998" y="133.5832083958021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y1t-Qo-TZa">

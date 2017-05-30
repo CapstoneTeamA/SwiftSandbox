@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.title = RestHelper.getInstance()
+        
+        fillLoginInfo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,9 +37,12 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(projTableViewController, animated: true)
     }
     
-
+    func fillLoginInfo() {
+        if let login = Bundle.main.path(forResource: "login", ofType: "plist"), let dict = NSDictionary(contentsOfFile: login) as? [String: AnyObject] {
+            self.username.text = (dict["username"] as? String)!
+            self.password.text = (dict["password"] as? String)!
+        }
+    }
     
-
-
 }
 
