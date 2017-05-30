@@ -9,7 +9,7 @@
 		<key>Current User</key>
 		<string>jamacloud.com/rest/latest/users/current</string>
 		<key>Test Plan Cycles</key>
-		<string>jamacloud.com/rest/latest/testplans/{testPlanID}/testcycles</string>
+		<string>jamacloud.com/rest/latest/testplans/{testPlanId}/testcycles</string>
 		<key>Test Plans</key>
 		<string>jamacloud.com/rest/latest/testplans?project={projectId}</string>
 		<key>Projects</key>

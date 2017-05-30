@@ -30,21 +30,35 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
             cell.backgroundColor = UIColor.red
             cell.selectionStyle = UITableViewCellSelectionStyle.none
         }
+        
+        
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let testPlanViewController : TestPlanTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestPlanTableViewController") as! TestPlanTableViewController
+        
+        testPlanViewController.projId = (projIds?[indexPath.row])!
+        
+        //These will go away but are useful right now
+        testPlanViewController.username = username
+        testPlanViewController.password = password
+        
+        self.navigationController?.pushViewController(testPlanViewController, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Projects"
         //load projects into class with api call.
-        getProjects()
+        fillProjectsList()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func getProjects() {
+    func fillProjectsList() {
         //Build endpoint url
         var endpoint = ""
         let instance = RestHelper.getInstance()

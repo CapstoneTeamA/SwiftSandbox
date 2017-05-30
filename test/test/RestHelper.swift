@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 public class RestHelper {
+    
     public static func getInstance() -> String{
         //Get the Endpoints plist, grab and return the value from the "Instance" key
         if let path = Bundle.main.path(forResource: "Endpoints", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
@@ -35,7 +36,7 @@ public class RestHelper {
         return ""
     }
     
-    public static func basicAuth(url : URL, username: String, password: String) ->URLRequest {
+    public static func basicAuth(url : URL, username: String, password: String) -> URLRequest {
         //Grab the username and password from UI and build an encoded string for Rest basic auth
         let user = username
         let pass = password
@@ -52,6 +53,7 @@ public class RestHelper {
         return urlRequest
     }
     
+    //This might belong in a different hepler or this helper should be renamed to better reflect all that it does.
     public static func reloadTable(tableView: UITableView) {
         DispatchQueue.main.async {
             tableView.reloadData()
