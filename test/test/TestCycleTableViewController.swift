@@ -65,7 +65,7 @@ class TestCycleTableViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         //Get a URLRequest with basic auth
-        let request = RestHelper.basicAuth(url: url)
+        let request = RestHelper.basicAuth(url: url, username: username, password: password)
         let session = URLSession.shared
         
         //define the completion handler for the dataTask because this is done async
