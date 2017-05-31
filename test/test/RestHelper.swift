@@ -13,7 +13,7 @@ public class RestHelper {
     
     public static func getInstance() -> String{
         //Get the Endpoints plist, grab and return the value from the "Instance" key
-        if let path = Bundle.main.path(forResource: "Endpoints", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
+        if let plist = Bundle.main.path(forResource: "Endpoints", ofType: "plist"), let dict = NSDictionary(contentsOfFile: plist) as? [String: AnyObject] {
             let instance :String = dict["Instance"] as! String
             return instance
         }
@@ -22,7 +22,7 @@ public class RestHelper {
     
     public static func getEndpoint(httpMethod:String, endpointKey:String) -> String {
         //Get the Endpoints plist, using the http method string select the correct dictionary of endpoints, then grab and return the endpoint
-        if let path = Bundle.main.path(forResource: "Endpoints", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
+        if let plist = Bundle.main.path(forResource: "Endpoints", ofType: "plist"), let dict = NSDictionary(contentsOfFile: plist) as? [String: AnyObject] {
             guard let httpDict : [String:AnyObject] = dict[httpMethod] as? Dictionary else {
                 print("HTTP method does not exist. Ensure method is all caps")
                 return ""

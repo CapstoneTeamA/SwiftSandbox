@@ -14,6 +14,7 @@ class TestRunTableViewController: UIViewController, UITableViewDelegate, UITable
     var testCycleId = -1
     var testRunNames: [String] = []
     var testRunIds: [Int] = []
+    var testRunSteps: [String : [[String : String]]] = [:]
     var username = ""
     var password = ""
     override func viewDidLoad() {
@@ -45,6 +46,17 @@ class TestRunTableViewController: UIViewController, UITableViewDelegate, UITable
         cell.textLabel?.text = testRunNames[indexPath.row]
         
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let testRun = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestRunViewController") as! TestRunViewController
+        
+        testRun.username = username
+        testRun.password = password
+        testRun.testRunName = (testRunNames[indexPath.row])
+        testRun.testRunId = (testRunIds[indexPath.row])
+        testRun.testSteps = testRunSteps[testRun.testRunName]!
+        self.navigationController?.pushViewController(testRun, animated: true)
     }
     
     func fillTestRunList() {
@@ -105,6 +117,13 @@ class TestRunTableViewController: UIViewController, UITableViewDelegate, UITable
                         
                         self.testRunNames.append(name)
                         self.testRunIds.append(run["id"] as! Int)
+                        
+                        if let steps : [[String : String]] = fields["testRunSteps"] as? Array {
+                            self.testRunSteps.updateValue(steps as [[String : String]], forKey: name)
+                        }
+                        else {
+                            self.testRunSteps.updateValue([], forKey: name)
+                        }
                     }
                 }
                 

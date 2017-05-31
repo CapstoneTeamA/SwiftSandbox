@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		138B70AA1EDE3DC500100CA4 /* login.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13AFB5C31EDE278900972589 /* login.plist */; };
+		138B70AC1EDEA99300100CA4 /* TestRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70AB1EDEA99300100CA4 /* TestRunViewController.swift */; };
+		138B70AE1EDEB04600100CA4 /* TestRunExecutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70AD1EDEB04600100CA4 /* TestRunExecutionCell.swift */; };
 		13AFB5B81ED9E41100972589 /* Endpoints.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13AFB5B71ED9E41100972589 /* Endpoints.plist */; };
 		13AFB5BA1ED9F11000972589 /* RestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5B91ED9F11000972589 /* RestHelper.swift */; };
 		13AFB5BC1EDAB22200972589 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5BB1EDAB22200972589 /* TableViewController.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		138B70AB1EDEA99300100CA4 /* TestRunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunViewController.swift; sourceTree = "<group>"; };
+		138B70AD1EDEB04600100CA4 /* TestRunExecutionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunExecutionCell.swift; sourceTree = "<group>"; };
 		13AFB5B71ED9E41100972589 /* Endpoints.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Endpoints.plist; sourceTree = "<group>"; };
 		13AFB5B91ED9F11000972589 /* RestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestHelper.swift; sourceTree = "<group>"; };
 		13AFB5BB1EDAB22200972589 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 				E2A6502A1ECBA88400056AAE /* Info.plist */,
 				13AFB5B71ED9E41100972589 /* Endpoints.plist */,
 				13AFB5C31EDE278900972589 /* login.plist */,
+				138B70AB1EDEA99300100CA4 /* TestRunViewController.swift */,
+				138B70AD1EDEB04600100CA4 /* TestRunExecutionCell.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -284,9 +290,11 @@
 			files = (
 				13AFB5BA1ED9F11000972589 /* RestHelper.swift in Sources */,
 				13AFB5C21EDE206D00972589 /* TestRunTableViewController.swift in Sources */,
+				138B70AC1EDEA99300100CA4 /* TestRunViewController.swift in Sources */,
 				13AFB5BE1EDCE58600972589 /* TestPlanTableViewController.swift in Sources */,
 				E2A650211ECBA88400056AAE /* ViewController.swift in Sources */,
 				E2A6501F1ECBA88400056AAE /* AppDelegate.swift in Sources */,
+				138B70AE1EDEB04600100CA4 /* TestRunExecutionCell.swift in Sources */,
 				13AFB5C01EDD44F500972589 /* TestCycleTableViewController.swift in Sources */,
 				13AFB5BC1EDAB22200972589 /* TableViewController.swift in Sources */,
 			);

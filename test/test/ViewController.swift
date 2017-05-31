@@ -38,19 +38,20 @@ class ViewController: UIViewController {
     }
     
     func fillLoginInfo() {
-        if let login = Bundle.main.path(forResource: "login", ofType: "plist"), let dict = NSDictionary(contentsOfFile: login) as? [String: AnyObject] {
-            var authString = ""
-            if let path = Bundle.main.path(forResource: "login", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
-                authString = dict["authString"] as! String
-                
-            }
-            let data = Data(base64Encoded: authString)
-            let plain :String = String(data: data!, encoding: String.Encoding.utf8)!
-            
-            var loginInfo = plain.components(separatedBy: ":")
-            self.username.text = loginInfo[0]
-            self.password.text = loginInfo[1]
+        var authString = ""
+        
+        if let loginInfo = Bundle.main.path(forResource: "login", ofType: "plist"), let dict = NSDictionary(contentsOfFile: loginInfo) as? [String: AnyObject] {
+            authString = dict["authString"] as! String
         }
+        let data = Data(base64Encoded: authString)
+        let plain :String = String(data: data!, encoding: String.Encoding.utf8)!
+        
+        if plain.contains(":") {
+        var loginInfo = plain.components(separatedBy: ":")
+        self.username.text = loginInfo[0]
+        self.password.text = loginInfo[1]
+        }
+        
     }
     
 }
