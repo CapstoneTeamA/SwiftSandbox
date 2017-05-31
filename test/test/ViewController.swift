@@ -39,8 +39,17 @@ class ViewController: UIViewController {
     
     func fillLoginInfo() {
         if let login = Bundle.main.path(forResource: "login", ofType: "plist"), let dict = NSDictionary(contentsOfFile: login) as? [String: AnyObject] {
-            self.username.text = (dict["username"] as? String)!
-            self.password.text = (dict["password"] as? String)!
+            var authString = ""
+            if let path = Bundle.main.path(forResource: "login", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
+                authString = dict["authString"] as! String
+                
+            }
+            let data = Data(base64Encoded: authString)
+            let plain :String = String(data: data!, encoding: String.Encoding.utf8)!
+            
+            var loginInfo = plain.components(separatedBy: ":")
+            self.username.text = loginInfo[0]
+            self.password.text = loginInfo[1]
         }
     }
     
