@@ -15,8 +15,6 @@ class TestCycleTableViewController: UIViewController, UITableViewDataSource, UIT
     var testPlanId: Int = -1
     var testCycleNames: [String] = []
     var testCycleIds: [Int] = []
-    var username = ""
-    var password = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +52,6 @@ class TestCycleTableViewController: UIViewController, UITableViewDataSource, UIT
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let testRunTable = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestRunTableViewController") as! TestRunTableViewController
         
-        testRunTable.username = username
-        testRunTable.password = password
         testRunTable.testCycleId = (testCycleIds[indexPath.row])
         
         self.navigationController?.pushViewController(testRunTable, animated: true)
@@ -76,7 +72,7 @@ class TestCycleTableViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         //Get a URLRequest with basic auth
-        let request = RestHelper.basicAuth(url: url, username: username, password: password)
+        let request = RestHelper.basicAuth(url: url)
         let session = URLSession.shared
         
         //define the completion handler for the dataTask because this is done async

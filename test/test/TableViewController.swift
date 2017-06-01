@@ -12,10 +12,12 @@ import UIKit
 class ProjectTableViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    var projects: [[String: AnyObject]] = []
     var projNames : [String]? = []
     var projIds : [Int]? = []
-    var username = ""
-    var password = ""
+
+    private let projectModel = ProjectListModel()
+    
     let unauthorizedMessage = "Error, unauthorized"
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return projNames!.count
@@ -30,8 +32,6 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
             cell.backgroundColor = UIColor.red
             cell.selectionStyle = UITableViewCellSelectionStyle.none
         }
-        
-        
         return cell
     }
     
@@ -43,10 +43,7 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
         
         testPlanViewController.projId = (projIds?[indexPath.row])!
         
-        //These will go away but are useful right now
-        testPlanViewController.username = username
-        testPlanViewController.password = password
-        
+      
         self.navigationController?.pushViewController(testPlanViewController, animated: true)
     }
     
@@ -54,80 +51,31 @@ class ProjectTableViewController : UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         self.title = "Projects"
         //load projects into class with api call.
-        fillProjectsList()
+        projectModel.delegate = self
+
+        projectModel.loadProjectList(username:LoginInfo.shared.username,password:LoginInfo.shared.password)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func fillProjectsList() {
-        //Build endpoint url
-        var endpoint = ""
-        let instance = RestHelper.getInstance()
-        endpoint += "https://" + instance + "."
-        endpoint += RestHelper.getEndpoint(httpMethod: "GET", endpointKey: "Projects")
-        
-        //Create a url from the endpoint string
-        guard let url = URL(string: endpoint) else {
-            print("Bad string for url")
-            return
+}
+
+extension ProjectTableViewController : ProjectListDelegate {
+    func didLoadProjectList(data: [[String : AnyObject]]?) {
+        if let projects = data {
+            for project in projects {
+                if let error : String = project["autherror"] as? String {
+                    projNames?.append(error)
+                    continue
+                }
+                let fields: [String : AnyObject] = project["fields"] as! Dictionary
+                projNames?.append(fields["name"] as! String)
+                projIds?.append(project["id"] as! Int)
+            }
         }
         
-        //Get a URLRequest with basic auth
-        let request = RestHelper.basicAuth(url: url, username: username, password: password)
-        let session = URLSession.shared
-        
-        //define the completion handler for the dataTask because this is done async
-        let task = session.dataTask(with: request) {
-            (data,response,error) in
-            guard error == nil else {
-                print("error calling endpoint")
-                print(error as Any)
-                return
-            }
-            guard let responseData = data else {
-                print("Error did not recieve data")
-                return
-            }
-            //Parsing json
-            do {
-                guard let jsonData = try JSONSerialization.jsonObject(with: responseData, options: [])
-                    as? [String: Any] else {
-                        print("error trying to convert to JSON")
-                        return
-                }
-                //Get the meta section of the response to get the status
-                var meta: [String:AnyObject] = jsonData["meta"] as! Dictionary
-                let status = meta["status"] as! String
-                
-                //If user isn't authorized show an auth failed message
-                if (status == "Unauthorized") {
-                    self.projNames?.append("Error, unauthorized")
-                    RestHelper.reloadTable(tableView: self.tableView)
-                    return
-                } else {
-                    //user authorized, parse data section of response and print greeting
-                    let projectsData: [[String:AnyObject]] = jsonData["data"] as! Array
-                    
-                    //Clear out data about projects to load in new data
-                    self.projIds = []
-                    self.projNames = []
-                    for project in projectsData {
-                        let fields : [String : AnyObject] = project["fields"] as! Dictionary
-                        let name : String = fields["name"] as! String
-                        
-                        self.projNames?.append(name)
-                        self.projIds?.append(project["id"] as! Int)
-                    }
-                }
-                
-            } catch {
-                print("error trying to convert to json")
-            }
-            //After api call returns, reload data
-            RestHelper.reloadTable(tableView: self.tableView)
-        }
-        task.resume()
+         RestHelper.reloadTable(tableView: self.tableView)
     }
 }

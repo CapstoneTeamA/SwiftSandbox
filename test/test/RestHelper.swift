@@ -36,10 +36,10 @@ public class RestHelper {
         return ""
     }
     
-    public static func basicAuth(url : URL, username: String, password: String) -> URLRequest {
+    public static func basicAuth(url : URL) -> URLRequest {
         //Grab the username and password from UI and build an encoded string for Rest basic auth
-        let user = username
-        let pass = password
+        let user = LoginInfo.shared.username
+        let pass = LoginInfo.shared.password
         let loginString = user + ":" + pass
         let loginData = loginString.data(using: String.Encoding.utf8)
         let base64LoginString = loginData?.base64EncodedString()

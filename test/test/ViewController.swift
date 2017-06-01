@@ -32,8 +32,9 @@ class ViewController: UIViewController {
     @IBAction func buttonTouchUp(_ sender: Any) {
         //Get the project table view controller and pass the username and password forward before navigating.
         let projTableViewController : ProjectTableViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProjectTableViewController") as! ProjectTableViewController
-        projTableViewController.username = username.text!
-        projTableViewController.password = password.text!
+
+        LoginInfo.shared.username = username.text!
+        LoginInfo.shared.password = password.text!
         self.navigationController?.pushViewController(projTableViewController, animated: true)
     }
     
