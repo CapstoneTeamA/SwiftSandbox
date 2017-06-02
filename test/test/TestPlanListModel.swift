@@ -7,23 +7,23 @@
 //
 
 import Foundation
-import UIKit
 
-protocol ProjectListDelegate: class {
-    func didLoadProjectList(data: [[String : AnyObject]]?)
+protocol TestPlanListDelegate : class {
+    func didLoadTestPlanList(data: [[String : AnyObject]]?)
 }
 
-class ProjectListModel {
+class TestPlanListModel {
+    weak var delegate : TestPlanListDelegate?
+    var testPlans : [[String : AnyObject]] = []
     
-    weak var delegate: ProjectListDelegate?
-    var projects : [[String : AnyObject]]? = nil
-    
-    func loadProjectList() {
+    func loadTestPlanList(forProjectId: Int) {
         //Build endpoint url
         var endpoint = ""
         let instance = RestHelper.getInstance()
         endpoint += "https://" + instance + "."
-        endpoint += RestHelper.getEndpoint(httpMethod: "GET", endpointKey: "Projects")
+        endpoint += RestHelper.getEndpoint(httpMethod: "GET", endpointKey: "Test Plans")
+        
+         endpoint = endpoint.replacingOccurrences(of: "{projectId}", with: "\(forProjectId)")
         
         //Create a url from the endpoint string
         guard let url = URL(string: endpoint) else {
@@ -59,20 +59,21 @@ class ProjectListModel {
                 
                 //If user isn't authorized show an auth failed message
                 if (status == "Unauthorized") {
-                    self.projects = []
-                    self.projects?.append(["autherror":"Error, unauthorized" as AnyObject])
+                    self.testPlans = []
+                    self.testPlans.append(["autherror":"Error, unauthorized" as AnyObject])
                     
                 } else {
                     //user authorized, parse data section of response and print greeting
-                    let projectsData: [[String:AnyObject]] = jsonData["data"] as! Array
-                    self.projects = projectsData
+                    let testPlanData: [[String:AnyObject]] = jsonData["data"] as! Array
+                    self.testPlans = testPlanData
                 }
-                self.delegate?.didLoadProjectList(data: self.projects)
+                self.delegate?.didLoadTestPlanList(data: self.testPlans)
                 
             } catch {
                 print("error trying to convert to json")
             }
         }
         task.resume()
+        
     }
 }

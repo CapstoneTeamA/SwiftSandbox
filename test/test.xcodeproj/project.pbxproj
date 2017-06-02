@@ -12,6 +12,7 @@
 		138B70AE1EDEB04600100CA4 /* TestRunExecutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70AD1EDEB04600100CA4 /* TestRunExecutionCell.swift */; };
 		138B70B11EE056DB00100CA4 /* ProjectListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70B01EE056DB00100CA4 /* ProjectListModel.swift */; };
 		138B70B41EE073C900100CA4 /* LoginInfoSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70B31EE073C900100CA4 /* LoginInfoSingleton.swift */; };
+		138B70B61EE1223400100CA4 /* TestPlanListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70B51EE1223400100CA4 /* TestPlanListModel.swift */; };
 		13AFB5B81ED9E41100972589 /* Endpoints.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13AFB5B71ED9E41100972589 /* Endpoints.plist */; };
 		13AFB5BA1ED9F11000972589 /* RestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5B91ED9F11000972589 /* RestHelper.swift */; };
 		13AFB5BC1EDAB22200972589 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5BB1EDAB22200972589 /* TableViewController.swift */; };
@@ -49,6 +50,7 @@
 		138B70AD1EDEB04600100CA4 /* TestRunExecutionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunExecutionCell.swift; sourceTree = "<group>"; };
 		138B70B01EE056DB00100CA4 /* ProjectListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListModel.swift; sourceTree = "<group>"; };
 		138B70B31EE073C900100CA4 /* LoginInfoSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInfoSingleton.swift; sourceTree = "<group>"; };
+		138B70B51EE1223400100CA4 /* TestPlanListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPlanListModel.swift; sourceTree = "<group>"; };
 		13AFB5B71ED9E41100972589 /* Endpoints.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Endpoints.plist; sourceTree = "<group>"; };
 		13AFB5B91ED9F11000972589 /* RestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestHelper.swift; sourceTree = "<group>"; };
 		13AFB5BB1EDAB22200972589 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				138B70B01EE056DB00100CA4 /* ProjectListModel.swift */,
+				138B70B51EE1223400100CA4 /* TestPlanListModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13AFB5BA1ED9F11000972589 /* RestHelper.swift in Sources */,
+				138B70B61EE1223400100CA4 /* TestPlanListModel.swift in Sources */,
 				13AFB5C21EDE206D00972589 /* TestRunTableViewController.swift in Sources */,
 				138B70AC1EDEA99300100CA4 /* TestRunViewController.swift in Sources */,
 				13AFB5BE1EDCE58600972589 /* TestPlanTableViewController.swift in Sources */,
