@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rZh-o5-eQ9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -42,7 +42,6 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="orC-J2-GC6"/>
-                                    <segue destination="rZh-o5-eQ9" kind="show" id="abb-nk-jlq"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="dib-FX-5G9">
@@ -56,17 +55,18 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="0n1-Q3-ioC">
-                        <barButtonItem key="backBarButtonItem" title="Go Back" id="SGI-MX-udI"/>
+                        <barButtonItem key="backBarButtonItem" title="Logout" id="SGI-MX-udI"/>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonOutlet" destination="mwm-wY-qTe" id="fUR-gQ-52u"/>
                         <outlet property="password" destination="dib-FX-5G9" id="CD4-UE-IzK"/>
                         <outlet property="username" destination="sFv-Fz-sod" id="uKq-9A-8Pe"/>
+                        <segue destination="0Do-kD-0Ff" kind="show" identifier="ProjectTableSegue" id="uwV-od-czV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="134"/>
+            <point key="canvasLocation" x="1074.4000000000001" y="135.38230884557723"/>
         </scene>
         <!--Project Table Controller-->
         <scene sceneID="ZG2-c8-BlL">
@@ -106,14 +106,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LUe-ad-qqh">
-                        <barButtonItem key="backBarButtonItem" title="Go Back" id="VjI-aO-Q13"/>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="IU8-Xa-l9i">
-                            <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="pI0-oh-qe8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="LUe-ad-qqh"/>
                     <connections>
                         <outlet property="tableView" destination="z7R-YR-7Id" id="jSm-1b-e7C"/>
                     </connections>
@@ -159,11 +152,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="A96-iX-RVw">
-                        <barButtonItem key="backBarButtonItem" title="Go Back" id="Bes-jg-neZ">
-                            <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="A96-iX-RVw"/>
                     <connections>
                         <outlet property="testPlanTable" destination="fOY-Cw-DH5" id="HAL-aJ-gDg"/>
                     </connections>
@@ -209,6 +198,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="sNa-ka-6yI"/>
                     <connections>
                         <outlet property="testCycleTable" destination="4HI-3M-Mca" id="LeP-ND-WJj"/>
                     </connections>
@@ -254,6 +244,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cBM-wY-TY6"/>
                     <connections>
                         <outlet property="testRunTable" destination="Qm2-QA-zIv" id="qNm-GC-Xjb"/>
                     </connections>
@@ -426,6 +417,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Dcf-sg-85W"/>
                     <connections>
                         <outlet property="testStepTable" destination="a7L-o0-T83" id="CQH-pG-YQn"/>
                     </connections>
@@ -437,7 +429,7 @@
         <!--Navigation Controller-->
         <scene sceneID="y1t-Qo-TZa">
             <objects>
-                <navigationController storyboardIdentifier="NavController" automaticallyAdjustsScrollViewInsets="NO" id="rZh-o5-eQ9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rZh-o5-eQ9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Akx-xZ-3eO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -445,12 +437,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="0Do-kD-0Ff" kind="relationship" relationship="rootViewController" id="cFi-ya-PEC"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4q3-Qz-DXP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teo-zr-Hex" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1926" y="-612"/>
+            <point key="canvasLocation" x="135.19999999999999" y="135.38230884557723"/>
         </scene>
     </scenes>
 </document>
