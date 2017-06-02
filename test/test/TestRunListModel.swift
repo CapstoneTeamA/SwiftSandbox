@@ -1,25 +1,26 @@
 //
-//  File.swift
+//  TestRunListModel.swift
 //  test
 //
-//  Created by PSU2 on 6/1/17.
+//  Created by PSU2 on 6/2/17.
 //  Copyright © 2017 Devan Cakebread. All rights reserved.
 //
 
 import Foundation
 
-class TestPlanListModel {
+class TestRunListModel {
     weak var delegate : EndpointDelegate?
-    var testPlans : [[String : AnyObject]] = []
+    var testRuns : [[String : AnyObject]] = []
+    var testCycleId = -1
     
-    func loadTestPlanList(forProjectId: Int) {
+    func loadTestRuns(forCycleId: Int) {
         //Build endpoint url
         var endpoint = ""
         let instance = RestHelper.getInstance()
-        
+       
         endpoint += "https://" + instance + "."
-        endpoint += RestHelper.getEndpoint(httpMethod: "GET", endpointKey: "Test Plans")
-        endpoint = endpoint.replacingOccurrences(of: "{projectId}", with: "\(forProjectId)")
+        endpoint += RestHelper.getEndpoint(httpMethod: "GET", endpointKey: "Test Cycle Runs")
+        endpoint = endpoint.replacingOccurrences(of: "{testCycleId}", with: "\(forCycleId)")
         
         RestHelper.hitEndpoint(atEndpointString: endpoint, withDelegate: delegate!)
     }

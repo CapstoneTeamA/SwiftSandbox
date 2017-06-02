@@ -53,6 +53,59 @@ public class RestHelper {
         return urlRequest
     }
     
+    static func hitEndpoint(atEndpointString: String, withDelegate: EndpointDelegate, httpMethod: String = "GET" ) {
+        //Create a url from the endpoint string
+        guard let url = URL(string: atEndpointString) else {
+            print("Bad string for url")
+            return
+        }
+        
+        //Get a URLRequest with basic auth
+        var request = RestHelper.basicAuth(url: url)
+        request.httpMethod = httpMethod
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: request) {
+            (data,response,error) in
+            guard error == nil else {
+                print("error calling endpoint")
+                print(error as Any)
+                return
+            }
+            guard let responseData = data else {
+                print("Error did not recieve data")
+                return
+            }
+            var endpointData : [[String: AnyObject]]  = []
+            //Parsing json
+            do {
+                guard let jsonData = try JSONSerialization.jsonObject(with: responseData, options: [])
+                    as? [String: Any] else {
+                        print("error trying to convert to JSON")
+                        return
+                }
+                //Get the meta section of the response to get the status
+                var meta: [String:AnyObject] = jsonData["meta"] as! Dictionary
+                let status = meta["status"] as! String
+                
+                //If user isn't authorized show an auth failed message
+                if (status == "Unauthorized") {
+                    endpointData = []
+                    endpointData.append(["autherror":"Error, unauthorized" as AnyObject])
+                    
+                } else {
+                    //user authorized, parse data section of response and print greeting
+                    endpointData = jsonData["data"] as! Array
+                }
+                withDelegate.didLoadEndpoint(data: endpointData)
+                
+            } catch {
+                print("error trying to convert to json")
+            }
+        }
+        task.resume()
+    }
+    
     //This might belong in a different hepler or this helper should be renamed to better reflect all that it does.
     public static func reloadTable(tableView: UITableView) {
         DispatchQueue.main.async {

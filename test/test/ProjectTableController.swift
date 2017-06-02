@@ -31,8 +31,8 @@ class ProjectTableController : UIViewController{
     
 }
 
-extension ProjectTableController : ProjectListDelegate {
-    func didLoadProjectList(data: [[String : AnyObject]]?) {
+extension ProjectTableController : EndpointDelegate {
+    func didLoadEndpoint(data: [[String : AnyObject]]?) {
         if let projects = data {
             for project in projects {
                 if let error : String = project["autherror"] as? String {

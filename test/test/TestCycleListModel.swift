@@ -1,29 +1,25 @@
 //
-//  File.swift
+//  TestCycleListModel.swift
 //  test
 //
-//  Created by PSU2 on 6/1/17.
+//  Created by PSU2 on 6/2/17.
 //  Copyright © 2017 Devan Cakebread. All rights reserved.
 //
 
 import Foundation
-import UIKit
 
-protocol EndpointDelegate : class {
-    func didLoadEndpoint(data: [[String : AnyObject]]?)
-}
-
-class ProjectListModel {
-    
+class TestCycleListModel {
     weak var delegate: EndpointDelegate?
-    var projects : [[String : AnyObject]]? = nil
+    var testCycles : [[String : AnyObject]] = []
     
-    func loadProjectList() {
+    func loadTestCycleList(forTestPlanId: Int) {
         //Build endpoint url
         var endpoint = ""
         let instance = RestHelper.getInstance()
+        
         endpoint += "https://" + instance + "."
-        endpoint += RestHelper.getEndpoint(httpMethod: "GET", endpointKey: "Projects")
+        endpoint += RestHelper.getEndpoint(httpMethod: "GET", endpointKey: "Test Plan Cycles")
+        endpoint = endpoint.replacingOccurrences(of: "{testPlanId}", with: "\(forTestPlanId)")
         
         RestHelper.hitEndpoint(atEndpointString: endpoint, withDelegate: delegate!)
     }

@@ -47,8 +47,8 @@ class TestPlanTableController: UIViewController, UITableViewDelegate, UITableVie
 
 }
 
-extension TestPlanTableController : TestPlanListDelegate {
-    func didLoadTestPlanList(data: [[String : AnyObject]]?){
+extension TestPlanTableController : EndpointDelegate {
+    func didLoadEndpoint(data: [[String : AnyObject]]?){
         if let testPlans = data {
             for testPlan in testPlans {
                 if let error : String = testPlan["autherror"] as? String {
