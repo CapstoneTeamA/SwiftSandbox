@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		138B70AA1EDE3DC500100CA4 /* login.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13AFB5C31EDE278900972589 /* login.plist */; };
-		138B70AC1EDEA99300100CA4 /* TestRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70AB1EDEA99300100CA4 /* TestRunViewController.swift */; };
+		138B70AC1EDEA99300100CA4 /* TestRunExecutionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70AB1EDEA99300100CA4 /* TestRunExecutionController.swift */; };
 		138B70AE1EDEB04600100CA4 /* TestRunExecutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70AD1EDEB04600100CA4 /* TestRunExecutionCell.swift */; };
 		138B70B11EE056DB00100CA4 /* ProjectListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70B01EE056DB00100CA4 /* ProjectListModel.swift */; };
 		138B70B41EE073C900100CA4 /* LoginInfoSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70B31EE073C900100CA4 /* LoginInfoSingleton.swift */; };
 		138B70B61EE1223400100CA4 /* TestPlanListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138B70B51EE1223400100CA4 /* TestPlanListModel.swift */; };
 		13AFB5B81ED9E41100972589 /* Endpoints.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13AFB5B71ED9E41100972589 /* Endpoints.plist */; };
 		13AFB5BA1ED9F11000972589 /* RestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5B91ED9F11000972589 /* RestHelper.swift */; };
-		13AFB5BC1EDAB22200972589 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5BB1EDAB22200972589 /* TableViewController.swift */; };
-		13AFB5BE1EDCE58600972589 /* TestPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5BD1EDCE58600972589 /* TestPlanTableViewController.swift */; };
-		13AFB5C01EDD44F500972589 /* TestCycleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5BF1EDD44F500972589 /* TestCycleTableViewController.swift */; };
-		13AFB5C21EDE206D00972589 /* TestRunTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5C11EDE206D00972589 /* TestRunTableViewController.swift */; };
+		13AFB5BC1EDAB22200972589 /* ProjectTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5BB1EDAB22200972589 /* ProjectTableController.swift */; };
+		13AFB5BE1EDCE58600972589 /* TestPlanTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5BD1EDCE58600972589 /* TestPlanTableController.swift */; };
+		13AFB5C01EDD44F500972589 /* TestCycleTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5BF1EDD44F500972589 /* TestCycleTableController.swift */; };
+		13AFB5C21EDE206D00972589 /* TestRunTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AFB5C11EDE206D00972589 /* TestRunTableController.swift */; };
 		E2A6501F1ECBA88400056AAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6501E1ECBA88400056AAE /* AppDelegate.swift */; };
-		E2A650211ECBA88400056AAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A650201ECBA88400056AAE /* ViewController.swift */; };
+		E2A650211ECBA88400056AAE /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A650201ECBA88400056AAE /* LoginController.swift */; };
 		E2A650241ECBA88400056AAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2A650221ECBA88400056AAE /* Main.storyboard */; };
 		E2A650261ECBA88400056AAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2A650251ECBA88400056AAE /* Assets.xcassets */; };
 		E2A650291ECBA88400056AAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2A650271ECBA88400056AAE /* LaunchScreen.storyboard */; };
@@ -46,21 +46,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		138B70AB1EDEA99300100CA4 /* TestRunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunViewController.swift; sourceTree = "<group>"; };
+		138B70AB1EDEA99300100CA4 /* TestRunExecutionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunExecutionController.swift; sourceTree = "<group>"; };
 		138B70AD1EDEB04600100CA4 /* TestRunExecutionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunExecutionCell.swift; sourceTree = "<group>"; };
 		138B70B01EE056DB00100CA4 /* ProjectListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListModel.swift; sourceTree = "<group>"; };
 		138B70B31EE073C900100CA4 /* LoginInfoSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInfoSingleton.swift; sourceTree = "<group>"; };
 		138B70B51EE1223400100CA4 /* TestPlanListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPlanListModel.swift; sourceTree = "<group>"; };
 		13AFB5B71ED9E41100972589 /* Endpoints.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Endpoints.plist; sourceTree = "<group>"; };
 		13AFB5B91ED9F11000972589 /* RestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestHelper.swift; sourceTree = "<group>"; };
-		13AFB5BB1EDAB22200972589 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		13AFB5BD1EDCE58600972589 /* TestPlanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPlanTableViewController.swift; sourceTree = "<group>"; };
-		13AFB5BF1EDD44F500972589 /* TestCycleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCycleTableViewController.swift; sourceTree = "<group>"; };
-		13AFB5C11EDE206D00972589 /* TestRunTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunTableViewController.swift; sourceTree = "<group>"; };
+		13AFB5BB1EDAB22200972589 /* ProjectTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableController.swift; sourceTree = "<group>"; };
+		13AFB5BD1EDCE58600972589 /* TestPlanTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPlanTableController.swift; sourceTree = "<group>"; };
+		13AFB5BF1EDD44F500972589 /* TestCycleTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCycleTableController.swift; sourceTree = "<group>"; };
+		13AFB5C11EDE206D00972589 /* TestRunTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunTableController.swift; sourceTree = "<group>"; };
 		13AFB5C31EDE278900972589 /* login.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = login.plist; sourceTree = "<group>"; };
 		E2A6501B1ECBA88400056AAE /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A6501E1ECBA88400056AAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E2A650201ECBA88400056AAE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E2A650201ECBA88400056AAE /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E2A650231ECBA88400056AAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E2A650251ECBA88400056AAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2A650281ECBA88400056AAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -115,6 +115,19 @@
 			name = Singletons;
 			sourceTree = "<group>";
 		};
+		138B70B71EE1ADA800100CA4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E2A650201ECBA88400056AAE /* LoginController.swift */,
+				13AFB5BB1EDAB22200972589 /* ProjectTableController.swift */,
+				13AFB5BD1EDCE58600972589 /* TestPlanTableController.swift */,
+				13AFB5BF1EDD44F500972589 /* TestCycleTableController.swift */,
+				13AFB5C11EDE206D00972589 /* TestRunTableController.swift */,
+				138B70AB1EDEA99300100CA4 /* TestRunExecutionController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		E2A650121ECBA88400056AAE = {
 			isa = PBXGroup;
 			children = (
@@ -138,14 +151,10 @@
 		E2A6501D1ECBA88400056AAE /* test */ = {
 			isa = PBXGroup;
 			children = (
+				138B70B71EE1ADA800100CA4 /* ViewControllers */,
 				138B70B21EE073B600100CA4 /* Singletons */,
 				138B70AF1EE056C600100CA4 /* Models */,
 				E2A6501E1ECBA88400056AAE /* AppDelegate.swift */,
-				E2A650201ECBA88400056AAE /* ViewController.swift */,
-				13AFB5BB1EDAB22200972589 /* TableViewController.swift */,
-				13AFB5BD1EDCE58600972589 /* TestPlanTableViewController.swift */,
-				13AFB5BF1EDD44F500972589 /* TestCycleTableViewController.swift */,
-				13AFB5C11EDE206D00972589 /* TestRunTableViewController.swift */,
 				13AFB5B91ED9F11000972589 /* RestHelper.swift */,
 				E2A650221ECBA88400056AAE /* Main.storyboard */,
 				E2A650251ECBA88400056AAE /* Assets.xcassets */,
@@ -153,7 +162,6 @@
 				E2A6502A1ECBA88400056AAE /* Info.plist */,
 				13AFB5B71ED9E41100972589 /* Endpoints.plist */,
 				13AFB5C31EDE278900972589 /* login.plist */,
-				138B70AB1EDEA99300100CA4 /* TestRunViewController.swift */,
 				138B70AD1EDEB04600100CA4 /* TestRunExecutionCell.swift */,
 			);
 			path = test;
@@ -315,16 +323,16 @@
 			files = (
 				13AFB5BA1ED9F11000972589 /* RestHelper.swift in Sources */,
 				138B70B61EE1223400100CA4 /* TestPlanListModel.swift in Sources */,
-				13AFB5C21EDE206D00972589 /* TestRunTableViewController.swift in Sources */,
-				138B70AC1EDEA99300100CA4 /* TestRunViewController.swift in Sources */,
-				13AFB5BE1EDCE58600972589 /* TestPlanTableViewController.swift in Sources */,
-				E2A650211ECBA88400056AAE /* ViewController.swift in Sources */,
+				13AFB5C21EDE206D00972589 /* TestRunTableController.swift in Sources */,
+				138B70AC1EDEA99300100CA4 /* TestRunExecutionController.swift in Sources */,
+				13AFB5BE1EDCE58600972589 /* TestPlanTableController.swift in Sources */,
+				E2A650211ECBA88400056AAE /* LoginController.swift in Sources */,
 				138B70B11EE056DB00100CA4 /* ProjectListModel.swift in Sources */,
 				E2A6501F1ECBA88400056AAE /* AppDelegate.swift in Sources */,
 				138B70AE1EDEB04600100CA4 /* TestRunExecutionCell.swift in Sources */,
-				13AFB5C01EDD44F500972589 /* TestCycleTableViewController.swift in Sources */,
+				13AFB5C01EDD44F500972589 /* TestCycleTableController.swift in Sources */,
 				138B70B41EE073C900100CA4 /* LoginInfoSingleton.swift in Sources */,
-				13AFB5BC1EDAB22200972589 /* TableViewController.swift in Sources */,
+				13AFB5BC1EDAB22200972589 /* ProjectTableController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

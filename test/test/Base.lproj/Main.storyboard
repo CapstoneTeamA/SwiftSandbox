@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rZh-o5-eQ9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -42,6 +42,7 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="orC-J2-GC6"/>
+                                    <segue destination="rZh-o5-eQ9" kind="show" id="abb-nk-jlq"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="dib-FX-5G9">
@@ -61,17 +62,16 @@
                         <outlet property="buttonOutlet" destination="mwm-wY-qTe" id="fUR-gQ-52u"/>
                         <outlet property="password" destination="dib-FX-5G9" id="CD4-UE-IzK"/>
                         <outlet property="username" destination="sFv-Fz-sod" id="uKq-9A-8Pe"/>
-                        <segue destination="0Do-kD-0Ff" kind="show" identifier="ProjectTableSegue" id="uwV-od-czV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074.4000000000001" y="135.38230884557723"/>
+            <point key="canvasLocation" x="943" y="134"/>
         </scene>
-        <!--Project Table View Controller-->
+        <!--Project Table Controller-->
         <scene sceneID="ZG2-c8-BlL">
             <objects>
-                <viewController storyboardIdentifier="ProjectTableViewController" id="0Do-kD-0Ff" customClass="ProjectTableViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProjectTableController" id="0Do-kD-0Ff" customClass="ProjectTableController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dO3-cc-uxA"/>
                         <viewControllerLayoutGuide type="bottom" id="Gs3-FU-D8E"/>
@@ -108,6 +108,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="LUe-ad-qqh">
                         <barButtonItem key="backBarButtonItem" title="Go Back" id="VjI-aO-Q13"/>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="IU8-Xa-l9i">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="pI0-oh-qe8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="z7R-YR-7Id" id="jSm-1b-e7C"/>
@@ -117,10 +122,10 @@
             </objects>
             <point key="canvasLocation" x="1925.5999999999999" y="134.48275862068968"/>
         </scene>
-        <!--Test Plan Table View Controller-->
+        <!--Test Plan Table Controller-->
         <scene sceneID="tfU-hv-fPh">
             <objects>
-                <viewController storyboardIdentifier="TestPlanTableViewController" id="mn7-8v-xjS" customClass="TestPlanTableViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestPlanTableController" id="mn7-8v-xjS" customClass="TestPlanTableController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dLr-4p-Tu6"/>
                         <viewControllerLayoutGuide type="bottom" id="5pl-TF-dAg"/>
@@ -167,10 +172,10 @@
             </objects>
             <point key="canvasLocation" x="3028" y="135"/>
         </scene>
-        <!--Test Cycle Table View Controller-->
+        <!--Test Cycle Table Controller-->
         <scene sceneID="faK-x0-tCX">
             <objects>
-                <viewController storyboardIdentifier="TestCycleTableViewController" id="1xw-DS-wcU" customClass="TestCycleTableViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestCycleTableController" id="1xw-DS-wcU" customClass="TestCycleTableController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RjY-bS-jcj"/>
                         <viewControllerLayoutGuide type="bottom" id="LkI-dB-1ST"/>
@@ -212,10 +217,10 @@
             </objects>
             <point key="canvasLocation" x="4007" y="134"/>
         </scene>
-        <!--Test Run Table View Controller-->
+        <!--Test Run Table Controller-->
         <scene sceneID="deo-51-r95">
             <objects>
-                <viewController storyboardIdentifier="TestRunTableViewController" id="ktM-Mz-RvJ" customClass="TestRunTableViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestRunTableController" id="ktM-Mz-RvJ" customClass="TestRunTableController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pUg-hE-WEM"/>
                         <viewControllerLayoutGuide type="bottom" id="jlP-Eq-Q1W"/>
@@ -257,10 +262,10 @@
             </objects>
             <point key="canvasLocation" x="4951.1999999999998" y="133.5832083958021"/>
         </scene>
-        <!--Test Run View Controller-->
+        <!--Test Run Execution Controller-->
         <scene sceneID="jyS-Bg-uHP">
             <objects>
-                <viewController storyboardIdentifier="TestRunViewController" id="4lQ-6G-lDs" customClass="TestRunViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestRunExecutionController" id="4lQ-6G-lDs" customClass="TestRunExecutionController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JZn-8q-BQh"/>
                         <viewControllerLayoutGuide type="bottom" id="lRm-gO-kNI"/>
@@ -308,7 +313,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="312"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bba-m1-i1b" id="37m-o6-MJE">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="311.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="312"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Result:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tep-Rp-FtY">
@@ -340,7 +345,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4b-GP-sDB">
-                                                    <rect key="frame" x="8" y="185" width="52" height="34"/>
+                                                    <rect key="frame" x="7" y="185" width="52" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -432,20 +437,20 @@
         <!--Navigation Controller-->
         <scene sceneID="y1t-Qo-TZa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rZh-o5-eQ9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavController" automaticallyAdjustsScrollViewInsets="NO" id="rZh-o5-eQ9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Akx-xZ-3eO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Akx-xZ-3eO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4q3-Qz-DXP"/>
+                        <segue destination="0Do-kD-0Ff" kind="relationship" relationship="rootViewController" id="cFi-ya-PEC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teo-zr-Hex" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135.19999999999999" y="135.38230884557723"/>
+            <point key="canvasLocation" x="1926" y="-612"/>
         </scene>
     </scenes>
 </document>

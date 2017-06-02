@@ -2,23 +2,26 @@
 //  TestRunTableViewController.swift
 //  test
 //
-//  Created by PSU2 on 5/30/17.
+//  Created by PSU2 on 5/29/17.
 //  Copyright © 2017 Devan Cakebread. All rights reserved.
 //
 
 import UIKit
 
-class TestRunTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TestCycleTableController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var testRunTable: UITableView!
-    var testCycleId = -1
-    var testRunNames: [String] = []
-    var testRunIds: [Int] = []
-    var testRunSteps: [String : [[String : String]]] = [:]
+    
+    @IBOutlet weak var testCycleTable: UITableView!
+    var testPlanId: Int = -1
+    var testCycleNames: [String] = []
+    var testCycleIds: [Int] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Test Runs"
-        fillTestRunList()
+        
+        self.title = "Test Cycles"
+        fillTestCycleList()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,33 +38,33 @@ class TestRunTableViewController: UIViewController, UITableViewDelegate, UITable
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return testRunNames.count
+        return testCycleNames.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "TestRunCell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "TestCycleCell")
         
-        cell.textLabel?.text = testRunNames[indexPath.row]
+        cell.textLabel?.text = testCycleNames[indexPath.row]
         
         return cell
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let testRun = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestRunViewController") as! TestRunViewController
+        let testRunTable = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestRunTableController") as! TestRunTableController
         
-        testRun.testRunName = (testRunNames[indexPath.row])
-        testRun.testRunId = (testRunIds[indexPath.row])
-        testRun.testSteps = testRunSteps[testRun.testRunName]!
-        self.navigationController?.pushViewController(testRun, animated: true)
+        testRunTable.testCycleId = (testCycleIds[indexPath.row])
+        
+        self.navigationController?.pushViewController(testRunTable, animated: true)
     }
     
-    func fillTestRunList() {
+ 
+    func fillTestCycleList() {
         var endpoint = ""
         let instance = RestHelper.getInstance()
         endpoint += "https://" + instance + "."
-        endpoint += RestHelper.getEndpoint(httpMethod: "GET", endpointKey: "Test Cycle Runs")
+        endpoint += RestHelper.getEndpoint(httpMethod: "GET", endpointKey: "Test Plan Cycles")
         
-        endpoint = endpoint.replacingOccurrences(of: "{testCycleId}", with: "\(self.testCycleId)")
+        endpoint = endpoint.replacingOccurrences(of: "{testPlanId}", with: "\(self.testPlanId)")
         
         guard let url : URL = URL(string: endpoint) else {
             print("Error")
@@ -97,29 +100,22 @@ class TestRunTableViewController: UIViewController, UITableViewDelegate, UITable
                 
                 //If user isn't authorized show an auth failed message
                 if (status == "Unauthorized") {
-                    self.testRunNames.append("Error, unauthorized")
-                    RestHelper.reloadTable(tableView: self.testRunTable)
+                    self.testCycleNames.append("Error, unauthorized")
+                    RestHelper.reloadTable(tableView: self.testCycleTable)
                     return
                 } else {
                     //user authorized, parse data section of response and print greeting
-                    let runData: [[String:AnyObject]] = jsonData["data"] as! Array
+                    let cycleData: [[String:AnyObject]] = jsonData["data"] as! Array
                     
                     //Clear out data about projects to load in new data
-                    self.testRunIds = []
-                    self.testRunNames = []
-                    for run in runData {
-                        let fields : [String : AnyObject] = run["fields"] as! Dictionary
+                    self.testCycleIds = []
+                    self.testCycleNames = []
+                    for cycle in cycleData {
+                        let fields : [String : AnyObject] = cycle["fields"] as! Dictionary
                         let name : String = fields["name"] as! String
                         
-                        self.testRunNames.append(name)
-                        self.testRunIds.append(run["id"] as! Int)
-                        
-                        if let steps : [[String : String]] = fields["testRunSteps"] as? Array {
-                            self.testRunSteps.updateValue(steps as [[String : String]], forKey: name)
-                        }
-                        else {
-                            self.testRunSteps.updateValue([], forKey: name)
-                        }
+                        self.testCycleNames.append(name)
+                        self.testCycleIds.append(cycle["id"] as! Int)
                     }
                 }
                 
@@ -127,10 +123,10 @@ class TestRunTableViewController: UIViewController, UITableViewDelegate, UITable
                 print("error trying to convert to json")
             }
             //After api call returns, reload data
-            RestHelper.reloadTable(tableView: self.testRunTable)
+            RestHelper.reloadTable(tableView: self.testCycleTable)
         }
         
-        RestHelper.reloadTable(tableView: self.testRunTable)
+        RestHelper.reloadTable(tableView: self.testCycleTable)
         task.resume()
         
     }

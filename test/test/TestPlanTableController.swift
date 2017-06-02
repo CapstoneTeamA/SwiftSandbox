@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TestPlanTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TestPlanTableController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var testPlanTable: UITableView!
     var testPlanNames: [String]? = []
     var testPlanIds: [Int]? = []
@@ -39,7 +39,7 @@ class TestPlanTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let testCycleTable = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestCycleTableViewController") as! TestCycleTableViewController
+        let testCycleTable = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestCycleTableController") as! TestCycleTableController
         
         testCycleTable.testPlanId = (testPlanIds?[indexPath.row])!
         self.navigationController?.pushViewController(testCycleTable, animated: true)
@@ -47,7 +47,7 @@ class TestPlanTableViewController: UIViewController, UITableViewDelegate, UITabl
 
 }
 
-extension TestPlanTableViewController : TestPlanListDelegate {
+extension TestPlanTableController : TestPlanListDelegate {
     func didLoadTestPlanList(data: [[String : AnyObject]]?){
         if let testPlans = data {
             for testPlan in testPlans {

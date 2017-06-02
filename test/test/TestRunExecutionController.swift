@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TestRunViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TestRunExecutionController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
     @IBOutlet weak var testStepTable: UITableView!
     var username = ""

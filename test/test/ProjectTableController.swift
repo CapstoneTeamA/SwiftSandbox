@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ProjectTableViewController : UIViewController{
+class ProjectTableController : UIViewController{
     @IBOutlet weak var tableView: UITableView!
     var projects: [[String: AnyObject]] = []
     var projNames : [String]? = []
@@ -31,7 +31,7 @@ class ProjectTableViewController : UIViewController{
     
 }
 
-extension ProjectTableViewController : ProjectListDelegate {
+extension ProjectTableController : ProjectListDelegate {
     func didLoadProjectList(data: [[String : AnyObject]]?) {
         if let projects = data {
             for project in projects {
@@ -49,7 +49,7 @@ extension ProjectTableViewController : ProjectListDelegate {
     }
 }
 
-extension ProjectTableViewController : UITableViewDelegate, UITableViewDataSource {
+extension ProjectTableController : UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return projNames!.count
     }
@@ -70,7 +70,7 @@ extension ProjectTableViewController : UITableViewDelegate, UITableViewDataSourc
         if tableView.cellForRow(at: indexPath)?.textLabel?.text == unauthorizedMessage {
             return
         }
-        let testPlanViewController : TestPlanTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestPlanTableViewController") as! TestPlanTableViewController
+        let testPlanViewController : TestPlanTableController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TestPlanTableController") as! TestPlanTableController
         //Pass project id ahead and segue to next view
         testPlanViewController.projId = (projIds?[indexPath.row])!
         self.navigationController?.pushViewController(testPlanViewController, animated: true)
